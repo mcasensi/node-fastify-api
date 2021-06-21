@@ -1,0 +1,4 @@
+### GET ALL SONGS
+GET http://localhost:5000/songs HTTP/1.1
+### GET SONGS BY ID
+GET http://localhost:5000/songs/1 HTTP/1.1
