@@ -2,7 +2,7 @@ const { getSongs, idSong} = require('../controller/songs')
 const Song = {
     type: 'object',
         properties:{
-        // id: {type: 'integer'},
+        id: {type: 'string'},
         name: {type: 'string'}
     },
 }
