@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "fastify": "^3.18.0",
-    "fastify-swagger": "^4.7.0"
+    "fastify-swagger": "^4.7.0",
+    "uuidv4": "^6.2.10"
   }
 }

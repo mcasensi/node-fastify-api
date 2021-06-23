@@ -1,4 +1,4 @@
-const { getSongs, idSong} = require('../controller/songs')
+const { getSongs, idSong, addSong} = require('../controller/songs')
 const Song = {
     type: 'object',
         properties:{
@@ -25,13 +25,23 @@ const getItemsOpt = {
     },
     handler: idSong
 }
+
+const postSongOpts = {
+    schema: {
+        response: {
+            201: Song
+        },
+    },
+    handler: addSong
+}
 function songRoutes(fastify, options, done)
 {
     //GET ALL SONGS
     fastify.get('/songs', getItemsOpts)
     // GET SONG BY ID
     fastify.get('/songs/:id', getItemsOpt)
-      
+    // ADD SONG
+    fastify.post('/songs', postSongOpts)  
     done()
 }
 module.exports = songRoutes
