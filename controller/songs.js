@@ -28,9 +28,21 @@ const deleteSong = (req, reply) => {
 
     reply.send({message: `Song ${id} has been removed`})
 }
+
+const updateSong = (req, reply) => {
+    const {id} = req.params
+    const {name} = req.body
+
+    songs = songs.map(song => (song.id === id ? {id, name}
+        : song))
+    song = songs.find(song => song.id === id)
+
+    reply.send(song)
+}
 module.exports ={
     getSongs,
     idSong,
     addSong,
-    deleteSong
+    deleteSong,
+    updateSong
 }
