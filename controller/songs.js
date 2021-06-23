@@ -20,8 +20,17 @@ const addSong = (req, reply) => {
     songs = [...songs, item]
     reply.code(201).send(item)
 }
+
+const deleteSong = (req, reply) => {
+    const {id} = req.params
+
+    songs = songs.filter(song => song.id !== id)
+
+    reply.send({message: `Song ${id} has been removed`})
+}
 module.exports ={
     getSongs,
     idSong,
-    addSong
+    addSong,
+    deleteSong
 }

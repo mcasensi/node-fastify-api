@@ -1,4 +1,4 @@
-const { getSongs, idSong, addSong} = require('../controller/songs')
+const { getSongs, idSong, addSong, deleteSong} = require('../controller/songs')
 const Song = {
     type: 'object',
         properties:{
@@ -43,6 +43,19 @@ const postSongOpts = {
     },
     handler: addSong
 }
+const deleteItemsOpt = {
+    schema: {
+        response: {
+            200: {
+                type: 'object',
+                properties: {
+                    message: {type: 'string'}
+                }
+            }
+        },
+    },
+    handler: deleteSong
+}
 function songRoutes(fastify, options, done)
 {
     //GET ALL SONGS
@@ -51,6 +64,8 @@ function songRoutes(fastify, options, done)
     fastify.get('/songs/:id', getItemsOpt)
     // ADD SONG
     fastify.post('/songs', postSongOpts)  
+    // DELETE SONG
+    fastify.delete('/songs/:id', deleteItemsOpt)  
     done()
 }
 module.exports = songRoutes
